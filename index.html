@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+<link rel="stylesheet" href="/css/Leaflet.BigImage.css" />
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+<script src="/js/Leaflet.BigImage.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/MarkerCluster.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/MarkerCluster.Default.css" /> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/leaflet.markercluster.js"></script> 
+
+<div id="OSM-map" style="height: 100%; margin: -8px;"></div>
+<script type="text/javascript">var map;
+var marker = [];
+var mapOptions = {
+    scrollWheelZoom: true,
+};
+
+var id = 'OSM-map';
+
+var centerLatLng = [49.16647931249694, 7.349304503645013];
+map = L.map(id, mapOptions).setView(centerLatLng, 5);
+
+L.tileLayer('https://{s}.tile.jawg.io/jawg-terrain/{z}/{x}/{y}{r}.png?access-token={accessToken}', {
+    attribution: 'generated with <a href="https://www.osm-generator.com/">osm-generator.com</a> - &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    accessToken: "GpEyGEZEwpkJnAyy5p2TlcItAbFBaeadtz8vwLloTnx4P5YXd0iavKk6FB1jCG1y",
+}).addTo(map);
+
+const markers = L.markerClusterGroup();
+L.marker
+
+L.marker(L.latLng(35.698398167950785, 139.77314772920496), {title: 'Akihabara'}).addTo(markers).bindPopup('Akihabara');
+L.marker(L.latLng(35.7005546062211, 139.77056238425004), {title: 'Hard Off'}).addTo(markers).bindPopup('Hard Off');
+
+markers.addTo(map);
+
+L.control.bigImage({
+    position: 'topright'
+}).addTo(map);
+</script>
