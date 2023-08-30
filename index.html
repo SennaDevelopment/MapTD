@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/MarkerCluster.Default.css" /> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/leaflet.markercluster.js"></script> 
 
-<div id="OSM-map" style="height: 100%; margin: -8px;"></div>
+<div id="OSM-map" style="height: 102.3%; margin: -8px;"></div>
 <script type="text/javascript">var map;
 var marker = [];
 var mapOptions = {
@@ -23,15 +23,63 @@ L.tileLayer('https://{s}.tile.jawg.io/jawg-terrain/{z}/{x}/{y}{r}.png?access-tok
     accessToken: "GpEyGEZEwpkJnAyy5p2TlcItAbFBaeadtz8vwLloTnx4P5YXd0iavKk6FB1jCG1y",
 }).addTo(map);
 
-const markers = L.markerClusterGroup();
-L.marker
+const markersScotland = L.markerClusterGroup({
+   iconCreateFunction: function(cluster) {
+      return L.divIcon({ html: '<b>' + cluster.getChildCount() + '</b> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABiM0N1AAAAe1BMVEVHcEwAT4/X2NgAW6UqesTM3/FZfqIAY6kAR5Dd6fMAVZyew+UASZgAa7W1v8jd3t/MzMwXXZ0EUpUAT6PNzc7///8Aa8ACbsICc8QAWbQAVbEAXLcCeMcAT6sAXrgBX7kEZ73u8/j4+vw+i82z0et2rNtam9OLuOFHcEwoct5WAAAAKXRSTlMAGoWv/v4Ng4P9bf7P1nnFKE8x8lD/////////////////////////ANhPDGkAAAOpSURBVFjD7dfbeqMgEADgVNFI7SbpQTQmVfD4/m+4AyLOID3sXuy3F52vF72Iv8MwgBwOP/ET/2+k6YOJNP2z5y6XjXh5fjzG8S8bcXw8Pj6/PHwHTC/RObLgW3TO+zuNqipLEL/w0svpzDulofQtSlRXFMqjKv1XQQiToPEImD68PEdnbp6NDgDq/0youacOilJIO+Ljo46jrgMbuuVZgCJVoEhGPLQKUSUMtBSlEEK66JP1OQ11GCq6oV/SqUg6WrEh1ignviVw8qGi4KMdlbNK5DhGVvM2FjVle0gnRdMJZCMEG9AT4y0EQaLTnTjVLh0xJdiR1+xwStReUvP9s3TIsIpulg1AR9aPA99Ry/DCjOiHgjqthvQk9WOyq/n0QXHkfVS+4yCIafCGqMZ7iKHpLE7TIChA5Uz4jGQz+RHUWTsUqoCiA0x6wkCRR+5lbZzbDUGm/+70hx2fcJFL/0V8ahcHQ3a+Wa7oK8utOLk3IUnftotzq1FGNu641XQxq4XxiqM7hDWrc3UQbmRG3zwwqWvst1o3l5tjoIpAepqqidMRsHHXsXySyHGQv0Bpr/Bk3/isbZGzQv46F6KaAysQTYFw6Rjn+m6gvUN3rf06bD1ngUIOBB0e3vh0OtSpMbTbc1hI6nLWGueGHQztt9KRh7Y8idJxjoFK5JBF3gVGVTVtyNkg6ujlEJq1ocTpIMdBnhMclV0VDU1ncVaIOPLD+TJdftun4yDqVONnvchHuUsHHANRJ5BOwsmpxwKOhgRy4LzaVScZqz6h67WhDobWA2LeH+DQgDeW45xgB6k9Z4U+6mU12z6W9A1Q8xo59Qqtq8vbLuDLq10bsJ3oFgxJoXwsZB36U/0tIS0DndO0PfcWS2uZdWjSfu14s84nsTEmvIHDi661ZRBU0iK44jgGplx4x4jKmWUcBJ8XdMPHo3KNXN/8XoUqXglEHTjMyCJ3DXit/fko1DDJDary/U6KGOdA6wR2O55PrDYQqY9NJ8SYFmxDS1ENJ4CIk/jpUEZHnwQkDY0d3pG/YqB1WN6FINSHihwQYUb34HW3tAE6cfqV4k25z7zXpgX9pADarhBJ3+Akgtm4NUEr1XEHdbBhPcVxlpkbS5Zlcfz09Pr67ilrRhCt29g7fj6lBupUco78WxncJeEumC3eO1nqNiR863SKn6M3/WCkNHj55GaHPS/YCIq9hcIt8vKd++aSnwbXiDO4C6aha+23bs+Hv7w+/8RP/NP4Dda1QyIGZg8JAAAAAElFTkSuQmCC"/>', className: "flag" });
+   }
+});
+L.marker(L.latLng(56.396437992024964, -3.548361851943988), {title: 'CrawfordsFarm'}).addTo(markersScotland).bindPopup('CrawfordsFarm');
+L.marker(L.latLng(56.395207005255, -3.5465053286277906), {title: 'Test'}).addTo(markersScotland).bindPopup('Test');
+markersScotland.addTo(map);
 
-L.marker(L.latLng(35.698398167950785, 139.77314772920496), {title: 'Akihabara'}).addTo(markers).bindPopup('Akihabara');
-L.marker(L.latLng(35.7005546062211, 139.77056238425004), {title: 'Hard Off'}).addTo(markers).bindPopup('Hard Off');
 
-markers.addTo(map);
+const markersFrance = L.markerClusterGroup({
+   iconCreateFunction: function(cluster) {
+      return L.divIcon({ html: '<b>' + cluster.getChildCount() + '</b> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABiM0N1AAAAclBMVEVHcEzJycllIFisGCLQy9DPHSrR0dK/GycAKImKY3wAK4bg4ODJHioAL5TDIS7m5ubu7u8CLZAAJYIDJoUALIm2GiT////sJDMAIZPqIC7oGyjtKjoAJpkBLJ0BNKMCOacBMKHByuX6xcncGibvM0L29/fF5r53AAAAFnRSTlMAKS8alttag4INGL+62HDh9L9umlFR+FaEYAAAAopJREFUWMPt10uTojAUhmFFFFC84KUTIIA96P//ixOSAOckMQmbqVn4dZfVi+apN+nesFp9993/u2wvl2XLnttEMxHdr+mtKI5iRRHH8W63XoeAWZRsE/nj/p4Wx25a23bd78/7fbmcDwePl0WnfEtIIpQbQLqWO1z6/VGTnupDYLaJHkm+rfk4tL8WncFACHmHOElOYkmS51uBiCWra4fXfoDU/rzq4Ut8v15KIXWZrFIb44KG55U2j2BoYtqnA5qSavlJakI+QU/f0eYcIj7Q0UDP01FUT8pLSUQrAowTUlc9KsIBRS1ynEXwnolehBlfkaaAP7/uNM6i+Z4VRHoOtTYnAALMdDTTCSkiAJJFJhMAQUYWjRByfBDRIFGEnEatdUL4ftT/kdVxQXoNKtIdbxGxQ4bDfEVoZTlAz9FpgOOAhvvRHSIhI4c5IWI4qsjiNAugwSEzBJhlRWWJimZHMOGQdERRg3tU0TMM4sZU1OAeVRQEldMkBHPGhUBjjg7NOYzRj1Bt6VGQpScEAj1lBSAGchiljQeCOWUFIAaKKKXMA8Ec7swQOpa7qNRyBmeC5numVDhOaMghyBEQ03qE5YLMnhHCPdQLEcOREKphAZDpzEU4JxiqKlsR6AmEuFAaEMVjfmhmcBFly44GGAlRW5C/qEKbIErZIqiqUNAEGY4HwkrVj5DBuKHKnISobR8hcagSJPUjRK3UZ8hS1PenARqdY3G7pemVL01v8eFwPl/e77cGEf2audLnp40o4itu92iPX6Ky9Xq3i2PsCQi19NvkseG/P0DFNXK82Qlv7ANQPyC5VAbomEZB75uyLx7e0sTyPDk9wKNRtOztOcs2Yktfn7/77p/uL961VwHTlSYUAAAAAElFTkSuQmCC"/>', className: "flag" });
+   }
+});
+L.marker(L.latLng(45.92867856151982, 1.0408125185600487), {title: "Village martyr d'Oradour-sur-Glane"}).addTo(markersFrance).bindPopup("Village martyr d'Oradour-sur-Glane");
+L.marker(L.latLng(45.92876801010237, 1.035121936428019), {title: "Oradour sur Glane memory centre"}).addTo(markersFrance).bindPopup('Oradour sur Glane memory centre');
+L.marker(L.latLng(49.63028296159294, -1.3609915566778883), {title: "Voler en Aéroplume"}).addTo(markersFrance).bindPopup('Voler en Aéroplume');
+markersFrance.addTo(map);
+
+
+const markersJapan = L.markerClusterGroup({
+   iconCreateFunction: function(cluster) {
+      return L.divIcon({ html: '<b>' + cluster.getChildCount() + '</b> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABiM0N1AAAARVBMVEVHcEzt5ujT09PMy8vDw8Pk5OTd3d3Q0NDa2tr07/DPz8////+5ACm/ADH39vfuwMvDGULKOVvgjKDZcYnTWXbkmqtHcExhiP1lAAAAF3RSTlMA8mwvFdS0gIb+T///////////////AAyu2CcAAAHXSURBVFjD7djbsoIgFAZg8cBBYCEe3v9VN6C2VRYq1UUX/k0zTZNfC0RjVRRPnvxu6jWZx1XVP1G1Jae0WUIp52VbVbfEijdsedXyhggAuQ2AIKSh3jupsK5KSgA8VLe0EXvj6PkCY692o+CUCP8hVtTlmbLlnBdGzEoXxv08kPVQBzEhcwKOXLJ7mxUc5BfyQD8ECdMP4zj0RnwEicl2OqSzg3kfMlZv0g3kTch0eh9r3oIiR6uuh3xIWI0kKaWhXqOZciGCFqR0ZzKhCWXc04osCEa0IKVSg0tB0VSr9ZEoKQXF596XE6LNB5CvZClIqQFdLXegcPyrInxsNyo6MEp1JKMi0u1O1Y5Cl5K4OmsRk5jtFCSHsPx0zGRWJE2KyYWEVbNxZBJnLQm5iw0xQkbIgkJJKDXJLMgtJbwgdBmdQX5wWHqZC0GPSYn70RnkpHh0qTvkKSTB2JvOBeSuuWFXVPqXTVxuIsxg16myfXoHIG7sRm5tJMTdbc3lt7ld7Vf2Rw+UD8EmWRApX9DSA7FNy9KQqPXC1wahZT1DglCOdlGO9D3QiQek4a0/kIEHTzrFeu0tgwfHRm5WPNTw6l63O9e3dqt06QWxtjavf37+SXjyy/kDjGqaU79og+oAAAAASUVORK5CYII="/>', className: "flag" });
+   }
+});
+L.marker(L.latLng(35.698398167950785, 139.77314772920496), {title: 'Akihabara'}).addTo(markersJapan).bindPopup('Akihabara');
+L.marker(L.latLng(35.7005546062211, 139.77056238425004), {title: 'Hard Off'}).addTo(markersJapan).bindPopup('Hard Off');
+markersJapan.addTo(map);
+
+const markersSouthKorea = L.markerClusterGroup({
+   iconCreateFunction: function(cluster) {
+      return L.divIcon({ html: '<b>' + cluster.getChildCount() + '</b> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABiM0N1AAAAmVBMVEVHcEzGxsbk5OTT0tLo5+jc3Ny/v7/Y2NjNzc3t7e7i4eLc3N/c3Nza2dm1tbXMzMzOzs7///8BQ5zPMDz39/cFBQXz8/P8/PwZGRnRNkKhpKhFRUW6uroXUqOxsbHBw8YxMTGSkpJaWlrHzthsbGx6enotQYqJiYm4L0Pxy85JdbXXVV7ZcXqCNV3ll55xk8RXO3PsrbKkOVVJz39RAAAAEXRSTlMAHdls9oMQgYH+xv+0mwcxT0yWpy8AAAPzSURBVFjD7ZjbdqowEIYrIBpREc0BEwRBlHqo2r7/w+1JOIhgqO7e9KJT19Kl4eOfmTCT6dvbn/3Zr7Wpbfek2fZ0+tKFPbf6aLszczIejQxlo9F40jdnbs9+Ajh1+8Yw/9SbTUYWwpgxrzDGGKbIMgCoeFqK7ZpjC9OB/DibGBRXiKblvAf6pnbPnfVHFoVLAdQzR0gL8W4CC33g8cAEG/QhDgZ4kV8LoEETg5xOIsaYYkpxPQ4K1MeNldt14L1sD0CB7wfc+TkICZJxktAfgzIiojWJedyFQnHTezpsgDa+H6Ykida+PlAMcbK2ukE0IVtO/CAhCdLuq0wEgmxZJwhuJR2Lib/RYYIoIWkIwrtAzprwrXSMxDo9gS8CX63CehCDn+Fe0rEq1NTZ7/fWbY0jSJyB7m0YYC0oAojKfuWYcz4el8vl8fRZ7ayQyEUpSn2uB4msyH7x66ekgC0Wi+O5iD6GpObOrTfaGFFHqOznjtHzcrGULwkC1L50bouAEol6Zlv7yAkrx9h5WelZytfxM//e4QlQIHMk1IOkf4Vj+5KyyBXBe64Jq/wTnqVWF8hDuWP4BID8r7LCu0iFSFjY6wSVD8uX1FOjSDvR4oFcB2nIvKdA/CuH3KGWn2WJ4K1HZPAYxC4fi0VL0eKUr4448p4E4cP1jvD+/l6Ld7seaUH0MP+6YT52u/nuKlHnV0H4MN+9l5zrXNkOvD2xF0HsMp9fC9LHvLSPMkjPg7yLkgCh+bpWHBB5pK+CnNV8JS/dScCqkvS8IsSjMto1QGnXp2PEOBH5HolaFCnwyayxMIVylN0kNTXtnttH2BKqi2zKKLXskK+mqAvEUCrL7K2ytZ1bFUUxE1GXIlmOUyKCqta2SBdW1ZFwowehRFZsOEOQdVHrN4d7Di3XpdwXDtLGCPraNuChbIHFt+hyE7XiOYfFUI6g29T9a2ZNtutQtcCqHDv8IFmrw6XsSDQlMRRI6IB6EPQa2Y6yuH5KwNZms7n5gbIwhENUmNT7f2tDSuekLHF/GqltZ3BMoEhs4yqQj3d2WJxrAs0jKDMWZ0kEO453PiIYvA9EhrVnLKEabRiFd0cxBKBGXZAnko7zcqgyBtlPaXMfNQtMEKOuw2LMszz7dzd7oOhbg+2o2qP3naJvzeGtA9t/KZLer1PmdSmCiQOmA2lyQNBHnDmNMDLLLEEMqxloMhjKkWU4mKiZxUIdY1Nt649NW4EYtcb9xhQ1VVOUOZyMDYXT8OBSYzKT49yASqBrv+lGRcXrq5mK0pvHKgyWMR7Oevm6odF3nxk3C31yWh0Vs+rAnNVGS7f32vhczM8wPr9N//6b8Ge/1v4BZLoG4vKDOHEAAAAASUVORK5CYII="/>', className: "flag" });
+   }
+});
+L.marker(L.latLng(37.512532239012295, 127.1023080512361), {title: 'Seoul Sky'}).addTo(markersSouthKorea).bindPopup('Seoul Sky');
+markersSouthKorea.addTo(map);
 
 L.control.bigImage({
     position: 'topright'
 }).addTo(map);
 </script>
+<style>
+   .flag {
+      height: 30px !important;
+      width: 30px !important;
+      font-size: 15px;
+      margin-top: 30px;
+   }
+   .flag > b {
+      margin-left: 11.5px !important;
+      margin-top: 35px !important;
+   }
+   .flag > img {
+      margin-left: -8px;
+      margin-top: -60px;
+      width: 45px;
+      filter: drop-shadow(3px 3px 4px #00000052);   
+   }
+</style>
